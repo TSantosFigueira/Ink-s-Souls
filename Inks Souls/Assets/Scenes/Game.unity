@@ -171,6 +171,10 @@ Prefab:
       propertyPath: m_Name
       value: room1
       objectReference: {fileID: 0}
+    - target: {fileID: 147938, guid: 54353af869b27014fa3ea8f72a5a8bfd, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54353af869b27014fa3ea8f72a5a8bfd, type: 2}
   m_IsPrefabParent: 0
@@ -889,6 +893,9 @@ MonoBehaviour:
   availableObjects:
   - {fileID: 108704, guid: a9754e6870a0ac4429e951928e19844c, type: 2}
   - {fileID: 197868, guid: eb01c9f0744fa28478038486bccd42a3, type: 2}
+  - {fileID: 134418, guid: 8ead96cd0ca73834f904eb4ff7af652a, type: 2}
+  - {fileID: 114456, guid: 122629a1d0107fa4095d6a4430a9938f, type: 2}
+  - {fileID: 122102, guid: b888b2f2961691d4e8f7b4c43d6bfc52, type: 2}
   objects: []
   objectsMinDistance: 5
   objectsMaxDistance: 20
