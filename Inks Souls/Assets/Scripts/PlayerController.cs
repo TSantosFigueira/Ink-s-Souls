@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour {
     void OnGUI() {
         DisplayCoinsCount();
         DisplayRestartButton();
+		DisplayMenuButton ();
     }
 
     void DisplayRestartButton() {
@@ -73,8 +74,18 @@ public class PlayerController : MonoBehaviour {
             if (GUI.Button(buttonRect, "Tap to restart!"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-               //Application.LoadLevel(Application.loadedLevelName);
             };
         }
     }
+
+	void DisplayMenuButton() {
+		if (dead /*&& grounded*/)
+		{
+			Rect buttonRect = new Rect(Screen.width * 0.60f, Screen.height * 0.60f, Screen.width * 0.45f, Screen.height * 0.1f);
+			if (GUI.Button(buttonRect, "Tap to Menu!"))
+			{
+				SceneManager.LoadScene("StartMenu");
+			};
+		}
+	}
 }
