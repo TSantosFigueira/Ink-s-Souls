@@ -48,4 +48,9 @@ public class MainMenuController : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void about()
+    {
+       // SceneManager.LoadScene("Sobre");
+    }
 }
