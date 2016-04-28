@@ -52,7 +52,6 @@ public class GeneratorScript : MonoBehaviour {
         foreach (var room in currentRooms)
         {
             float roomWidth = room.transform.FindChild("floor").localScale.x;
-            Debug.Log(room.transform.FindChild("floor"));
             float roomStartX = room.transform.position.x - (roomWidth * 0.5f);
             float roomEndX = roomStartX + roomWidth;
 

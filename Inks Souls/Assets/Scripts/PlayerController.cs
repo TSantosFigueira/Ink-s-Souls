@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -63,7 +64,6 @@ public class PlayerController : MonoBehaviour {
     void OnGUI() {
         DisplayCoinsCount();
         DisplayRestartButton();
-
     }
 
     void DisplayRestartButton() {
@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour {
             Rect buttonRect = new Rect(Screen.width * 0.35f, Screen.height * 0.45f, Screen.width * 0.30f, Screen.height * 0.1f);
             if (GUI.Button(buttonRect, "Tap to restart!"))
             {
-                Application.LoadLevel(Application.loadedLevelName);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+               //Application.LoadLevel(Application.loadedLevelName);
             };
         }
     }
