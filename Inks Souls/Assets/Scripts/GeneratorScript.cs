@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GeneratorScript : MonoBehaviour {
-    //só para teste
+    //só para teste novamente
     public GameObject[] availableRooms;
     public List<GameObject> currentRooms;
     private float screenWidthInPoints;
