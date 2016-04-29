@@ -10,10 +10,18 @@ public class PlayerController : MonoBehaviour {
     private bool dead = false;
 
     private uint coins = 0;
+    private int highestScore = 0; // mudar aqui caso seja necessário acessar de outra classe
 
     public Texture2D coinIconTexture;
 
     public GUIStyle restartButtonStyle;
+
+    void Start ()
+    {
+        //Recupera o high score do sistema
+        highestScore = PlayerPrefs.GetInt("highScore", 0);
+        Debug.Log(highestScore);
+    }
 
     void FixedUpdate() {
         bool jetpackActive = Input.GetButton("Fire1");
@@ -44,6 +52,12 @@ public class PlayerController : MonoBehaviour {
 
     void CollectCoin(Collider2D coinCollider) {
         coins++;
+
+        // Salva o score mais alto no sistema. 
+        if(coins > highestScore)
+        {
+            PlayerPrefs.SetInt("highScore", (int) coins);
+        }
 
         Destroy(coinCollider.gameObject);
     }
