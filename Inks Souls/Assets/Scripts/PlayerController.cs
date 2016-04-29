@@ -7,21 +7,26 @@ public class PlayerController : MonoBehaviour {
     public float jetpackForce = 75.0f;
     public float forwardMovementSpeed = 3.0f;
 
-    private bool dead = false;
+    public static bool dead = false;
 
-    private uint coins = 0;
+    public static uint coins = 0;
+
     private int highestScore = 0; // mudar aqui caso seja necessário acessar de outra classe
-
-    public Texture2D coinIconTexture;
 
     public GUIStyle restartButtonStyle;
 
-    void Start ()
-    {
+    void Awake() {
+
+        dead = false;
+        coins = 0;   
+    }
+
+    void Start() {
         //Recupera o high score do sistema
         highestScore = PlayerPrefs.GetInt("highScore", 0);
         Debug.Log(highestScore);
     }
+
 
     void FixedUpdate() {
         bool jetpackActive = Input.GetButton("Fire1");
@@ -54,31 +59,18 @@ public class PlayerController : MonoBehaviour {
         coins++;
 
         // Salva o score mais alto no sistema. 
-        if(coins > highestScore)
+        if (coins > highestScore)
         {
-            PlayerPrefs.SetInt("highScore", (int) coins);
+            PlayerPrefs.SetInt("highScore", (int)coins);
         }
 
         Destroy(coinCollider.gameObject);
     }
 
-    void DisplayCoinsCount() {
-        Rect coinIconRect = new Rect(10, 10, 32, 32);
-        GUI.DrawTexture(coinIconRect, coinIconTexture);
-
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 30;
-        style.fontStyle = FontStyle.Bold;
-        style.normal.textColor = Color.yellow;
-
-        Rect labelRect = new Rect(coinIconRect.xMax, coinIconRect.y, 60, 32);
-        GUI.Label(labelRect, coins.ToString(), style);
-    }
-
     void OnGUI() {
-        DisplayCoinsCount();
-        DisplayRestartButton();
-		DisplayMenuButton ();
+        
+        //DisplayRestartButton();
+		//DisplayMenuButton ();
     }
 
     void DisplayRestartButton() {
