@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour {
         if (collider.gameObject.CompareTag("Coins"))
             CollectCoin(collider);
         else
-            HitByLaser(collider);
+            HitByEnemy(collider);
     }
 
-    void HitByLaser(Collider2D laserCollider) {
+    void HitByEnemy(Collider2D enemyCollider) {
         dead = true;
     }
 
