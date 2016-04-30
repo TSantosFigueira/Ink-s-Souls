@@ -51,6 +51,6 @@ public class MainMenuController : MonoBehaviour {
 
     public void about()
     {
-       // SceneManager.LoadScene("Sobre");
+       SceneManager.LoadScene("Credits");
     }
 }

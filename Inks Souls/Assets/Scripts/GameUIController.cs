@@ -64,6 +64,17 @@ public class GameUIController : MonoBehaviour {
 
             Rect labelRect = new Rect(coinIconRect.xMax, coinIconRect.y+10, 60, 32);
             GUI.Label(labelRect, PlayerController.coins.ToString(), style);
+        }else
+        {
+            Rect coinIconRect = new Rect(500, 250, 60, 60);
+            GUI.DrawTexture(coinIconRect, coinIconTexture);
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 40;
+            style.fontStyle = FontStyle.Bold;
+            style.normal.textColor = Color.yellow;
+
+            Rect labelRect = new Rect(coinIconRect.xMax, coinIconRect.y + 10, 60, 32);
+            GUI.Label(labelRect, PlayerController.coins.ToString(), style);
         }
     }
 
