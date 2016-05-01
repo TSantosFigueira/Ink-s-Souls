@@ -9,9 +9,13 @@ public class GameUIController : MonoBehaviour
     public GameObject PauseUI;
     public GameObject PauseButton;
     public GameObject GameOverUI;
+    public GameObject Hud;
 
     public Text scoreText;
     public Text highScoreText;
+
+    public Text gameScore;
+    public Text gameHighScore;
 
     private bool paused = false;
 
@@ -20,9 +24,14 @@ public class GameUIController : MonoBehaviour
 
     void Start()
     {
-
         PauseUI.SetActive(false);
         GameOverUI.SetActive(false);
+    }
+
+    void Update()
+    {
+        gameScore.text = PlayerController.coins.ToString();
+        gameHighScore.text = PlayerPrefs.GetInt("highScore").ToString();
     }
 
     public void Pause()
@@ -99,7 +108,7 @@ public class GameUIController : MonoBehaviour
         if (PlayerController.dead == true)
         {
             GameOverUI.SetActive(true);
-            PauseButton.SetActive(false);
+            Hud.SetActive(false);
             showScore();
         }
     }
