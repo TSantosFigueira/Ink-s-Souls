@@ -7,8 +7,14 @@ public class PlayerController : MonoBehaviour {
     public float jetpackForce = 75.0f;
     public float forwardMovementSpeed = 3.0f;
 
-    public static bool dead = false;
+    Animator animator;
 
+    const int state_iddle = 0;
+    const int state_flying = 1;
+
+    int _currentAnimationState = 0;
+
+    public static bool dead = false;
     public static uint coins = 0;
 
     private int highestScore = 0; // mudar aqui caso seja necessário acessar de outra classe
@@ -22,11 +28,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start() {
+
+        animator = this.GetComponent<Animator>();
+        
         //Recupera o high score do sistema
         highestScore = PlayerPrefs.GetInt("highScore", 0);
-        Debug.Log(highestScore);
     }
 
+    void OnCollisionEnter2D (Collision2D coll)
+    {
+        if (coll.gameObject.name == "floor")
+        {
+            animator.SetInteger("State", state_iddle);
+        }
+    }
 
     void FixedUpdate() {
         bool jetpackActive = Input.GetButton("Fire1");
@@ -41,6 +56,11 @@ public class PlayerController : MonoBehaviour {
             Vector2 newVelocity = GetComponent<Rigidbody2D>().velocity;
             newVelocity.x = forwardMovementSpeed;
             GetComponent<Rigidbody2D>().velocity = newVelocity;
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            animator.SetInteger("State", state_flying);
         }
     }
 
@@ -66,32 +86,4 @@ public class PlayerController : MonoBehaviour {
 
         Destroy(coinCollider.gameObject);
     }
-
-    void OnGUI() {
-        
-        //DisplayRestartButton();
-		//DisplayMenuButton ();
-    }
-
-    void DisplayRestartButton() {
-        if (dead /*&& grounded*/)
-        {
-            Rect buttonRect = new Rect(Screen.width * 0.35f, Screen.height * 0.45f, Screen.width * 0.30f, Screen.height * 0.1f);
-            if (GUI.Button(buttonRect, "Tap to restart!"))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            };
-        }
-    }
-
-	void DisplayMenuButton() {
-		if (dead /*&& grounded*/)
-		{
-			Rect buttonRect = new Rect(Screen.width * 0.60f, Screen.height * 0.60f, Screen.width * 0.45f, Screen.height * 0.1f);
-			if (GUI.Button(buttonRect, "Tap to Menu!"))
-			{
-				SceneManager.LoadScene("StartMenu");
-			};
-		}
-	}
 }
