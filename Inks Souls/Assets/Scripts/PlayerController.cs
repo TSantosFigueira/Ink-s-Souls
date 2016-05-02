@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void HitByEnemy(Collider2D enemyCollider) {
-        //dead = true;
+        dead = true;
     }
 
     void CollectCoin(Collider2D coinCollider) {
