@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
 
     public float jetpackForce = 75.0f;
-    public float forwardMovementSpeed = 3.0f;
+    public float forwardMovementSpeed = 4.0f;
 
     Animator animator;
 
@@ -54,6 +54,13 @@ public class PlayerController : MonoBehaviour {
 
         if (!dead) {
             Vector2 newVelocity = GetComponent<Rigidbody2D>().velocity;
+            if (coins >= 1500 && coins < 3000)
+                forwardMovementSpeed = 5.0f;
+            else if (coins >= 3000 && coins < 7000)
+                forwardMovementSpeed = 8.0f;
+            else if (coins >= 7000)
+                forwardMovementSpeed = 10.0f;
+             
             newVelocity.x = forwardMovementSpeed;
             GetComponent<Rigidbody2D>().velocity = newVelocity;
         }
@@ -72,11 +79,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void HitByEnemy(Collider2D enemyCollider) {
-        dead = true;
+        //dead = true;
     }
 
     void CollectCoin(Collider2D coinCollider) {
-        coins++;
+        coins+=100;
 
         // Salva o score mais alto no sistema. 
         if (coins > highestScore)

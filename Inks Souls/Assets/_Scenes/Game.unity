@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetpackForce: 25
-  forwardMovementSpeed: 3
+  forwardMovementSpeed: 4
   restartButtonStyle:
     m_Name: 
     m_Normal:
